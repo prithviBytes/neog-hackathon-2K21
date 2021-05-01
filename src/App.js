@@ -1,16 +1,16 @@
-import Navbar from "./components/Navbar/Navbar";
+import {Routes,Route,Navigate} from 'react-router-dom'
+import Homepage from './Pages/Homepage'
 import Auth from "./components/Auth/Auth";
-import ChatRoomForm from "./components/ChatroomForm/ChatroomForm";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute"
 import "./styles.css";
 
 export default function App() {
   return (
     <div className="App">
-      <Navbar />
-      <div className="content">
-        <Auth />
-        <ChatRoomForm />
-      </div>
+      <Routes>
+        <Route path="/auth" element={<Auth />}/>
+        <PrivateRoute path="/" element={<Homepage />} />
+      </Routes>
     </div>
   );
 }
