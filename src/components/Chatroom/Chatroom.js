@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import ChatSection from "../ChatSection/ChatSection";
+import ChatSection from "./ChatSection/ChatSection";
+import ChatParticipants from "./ChatParticipants/ChatParticipants";
 
-import fb, { db } from "../../firebase";
+import { db } from "../../firebase";
+
+import "./chatroom.css";
 
 export default function Chatroom() {
   const { id } = useParams();
 
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState({});
+  const [members, setMembers] = useState({});
+  const [chatRoomData, setChatRoomData] = useState({});
 
   console.log(messages);
 
@@ -23,31 +28,40 @@ export default function Chatroom() {
     };
   }, []);
 
+  const sendMessage = (message) => {
+    db.collection("chatrooms").doc(id).collection("messages").add({
+      from: "1",
+      text: message,
+      timestamp: new Date().valueOf(),
+    });
+  };
+
   const getChatRoomData = async () => {
     const chatRoomSnaphot = await db.collection("chatrooms").doc(id).get();
 
-    console.log("details", chatRoomSnaphot.data());
+    setChatRoomData(chatRoomSnaphot.data());
   };
 
   const subscribeToChatRoomMessages = () => {
-    const messages = [];
     const chatRoomMessagesSnaphot = db
       .collection("chatrooms")
       .doc(id)
       .collection("messages")
+      .orderBy("timestamp")
       .onSnapshot((snapshot) => {
+        const messagesFromServer = {};
         snapshot.forEach((doc) => {
-          messages.push(doc.data());
+          messagesFromServer[doc.id] = doc.data();
         });
-        console.log("here");
-        setMessages(messages);
+        console.log({ messagesFromServer });
+        setMessages(messagesFromServer);
       });
 
     return chatRoomMessagesSnaphot;
   };
 
   const subscribeToChatRoomMembers = async () => {
-    const members = [];
+    const members = {};
     const chatRoomMemberSnaphot = db
       .collection("chatrooms")
       .doc(id)
@@ -55,17 +69,18 @@ export default function Chatroom() {
       .orderBy("name")
       .onSnapshot((snapshot) => {
         snapshot.forEach((doc) => {
-          members.push(doc.data());
+          members[doc.id] = doc.data();
         });
+        setMembers(members);
       });
 
     return chatRoomMemberSnaphot;
   };
 
   return (
-    <>
-      <h2>Chatroom {id}</h2>
-      <ChatSection messages={messages} />
-    </>
+    <div className="chatroom">
+      <ChatSection messages={messages} sendMessage={sendMessage} />
+      <ChatParticipants members={members} />
+    </div>
   );
 }
