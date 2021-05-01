@@ -1,0 +1,74 @@
+.Navbar {
+    position: fixed;
+    min-width: 250px;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    z-index: 5;
+    transition: min-width 0.4s;
+  }
+  .Navbar-container {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  .Brand-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    padding: 0 24px;
+  }
+  .Brand-logo {
+    color: black;
+    background-color: #fff;
+    padding: 5px;
+    font-size: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  .Brand-name {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    transition: all 0.4s;
+  }
+  .Navbar-navigation {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 25px;
+    transition: padding 0.4s;
+  }
+  .Navbar-item {
+    display: flex;
+    color: #b3b3b3;
+    align-items: center;
+    height: 45px;
+    padding: 0 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.4s;
+  }
+  .Navbar-item-logo {
+    font-size: 24px;
+    margin-right: 16px;
+  }
+  .Navbar-item-logo svg {
+    font-size: 24px;
+  }
+  .Navbar-item-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    transition: font-size 0.4s;
+  }
+  .Navbar-item:hover {
+    color: #fff;
+  }
+  /* @media (max-width: 850px) {
+    .Navbar {
+      transform: translateX(-250px);
+    }
+  } */
+  
