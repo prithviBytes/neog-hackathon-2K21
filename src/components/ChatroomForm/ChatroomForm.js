@@ -4,6 +4,7 @@ import fb, { db } from "../../firebase";
 import firebase from "firebase";
 
 import "./chatroom-form.css";
+import { useNavigate } from "react-router-dom";
 
 export default function ChatRoomForm() {
   const validators = {
@@ -17,6 +18,8 @@ export default function ChatRoomForm() {
       return rules.length < 300;
     },
   };
+
+  const navigate = useNavigate();
 
   const initialFormData = {
     title: {
@@ -68,6 +71,7 @@ export default function ChatRoomForm() {
       .then((chatroom) => {
         addOwnerToChatroom(chatroom, currentUser);
         addChatroomToUserCollection(chatroom, currentUser);
+        navigate(`/chatroom/${chatroom.id}`);
       });
   };
 
