@@ -3,6 +3,9 @@ import { AiFillWechat } from "react-icons/ai";
 import "./navbar.css";
 
 export default function Navbar() {
+
+
+
   return (
     <nav className="Navbar">
       <div className="Navbar-container">
