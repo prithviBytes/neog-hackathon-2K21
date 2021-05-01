@@ -8,8 +8,8 @@ export default function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Auth />}/>
-        <PrivateRoute path="/home" element={<Homepage />} />
+        <Route path="/auth" element={<Auth />}/>
+        <PrivateRoute path="/" element={<Homepage />} />
       </Routes>
     </div>
   );
