@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar/Navbar";
 import Auth from "./components/Auth/Auth";
+import ChatRoomForm from "./components/ChatroomForm/ChatroomForm";
 import "./styles.css";
 
 export default function App() {
@@ -8,6 +9,7 @@ export default function App() {
       <Navbar />
       <div className="content">
         <Auth />
+        <ChatRoomForm />
       </div>
     </div>
   );

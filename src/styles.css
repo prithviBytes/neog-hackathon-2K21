@@ -17,6 +17,7 @@ background-color: rgb(0, 184, 96); */
 .App {
   font-family: "Rubik", sans-serif;
   text-align: center;
+  color: #fff;
 }
 .content {
   height: 100vh;
