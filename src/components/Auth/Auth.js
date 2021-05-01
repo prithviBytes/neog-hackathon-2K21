@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
+import {useNavigate} from 'react-router-dom'
 import "./auth.css";
 
 import firebase, { db } from "../../firebase";
 
-export default function Auth() {
+export default function Auth({from}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isNewAccount, setIsNewAccount] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -64,6 +66,7 @@ export default function Auth() {
         const user = result.user;
         findOrCreateNewUserInCollection(user);
       });
+    
   };
 
   const logout = () => {
@@ -88,6 +91,7 @@ export default function Auth() {
           });
         }
       });
+      navigate(from || -1)
   };
 
   return (
