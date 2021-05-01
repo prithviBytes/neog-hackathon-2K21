@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import firebase, { db } from "../../firebase";
+import fb, { db } from "../../firebase";
+import firebase from "firebase";
 
 import "./chatroom-form.css";
 
@@ -54,7 +55,7 @@ export default function ChatRoomForm() {
   };
 
   const createChatroomInFireBase = () => {
-    const currentUser = firebase.auth().currentUser;
+    const currentUser = fb.auth().currentUser;
     db.collection("chatrooms")
       .add({
         title: form.title.value,
@@ -66,6 +67,7 @@ export default function ChatRoomForm() {
       })
       .then((chatroom) => {
         addOwnerToChatroom(chatroom, currentUser);
+        addChatroomToUserCollection(chatroom, currentUser);
       });
   };
 
@@ -81,6 +83,14 @@ export default function ChatRoomForm() {
       })
       .then(() => {
         console.log("success");
+      });
+  };
+
+  const addChatroomToUserCollection = (chatroom, currentUser) => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .update({
+        chatrooms: firebase.firestore.FieldValue.arrayUnion(chatroom.id),
       });
   };
 
