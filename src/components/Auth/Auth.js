@@ -24,10 +24,16 @@ export default function Auth() {
         .createUserWithEmailAndPassword(email, password)
         .then((result) => {
           const user = result.user;
-          findOrCreateNewUserInCollection(user);
-          setName("");
-          setEmail("");
-          setPassword("");
+          result.user
+            .updateProfile({
+              displayName: name,
+            })
+            .then(() => {
+              findOrCreateNewUserInCollection(user);
+              setName("");
+              setEmail("");
+              setPassword("");
+            });
         })
         .catch((error) => {
           console.log(error.message);
@@ -70,19 +76,16 @@ export default function Auth() {
   };
 
   const findOrCreateNewUserInCollection = (user) => {
-    console.log(user);
     db.collection("users")
       .doc(user.uid)
       .get()
       .then((data) => {
         if (!data.data()) {
-          db.collection("users")
-            .doc(user.uid)
-            .set({
-              name: user.displayName || name,
-              email: user.email,
-              chatrooms: []
-            });
+          db.collection("users").doc(user.uid).set({
+            name: user.displayName,
+            email: user.email,
+            chatrooms: [],
+          });
         }
       });
   };
