@@ -39,12 +39,29 @@ export default function ChatroomCard({ chatroom }) {
         setMessageCount(querySnapshot.size);
       });
   }, []);
+  console.log(owner);
   return (
     <Link to={`/chatroom/${chatroom.chatroomId}`} className="chatroom-card">
       <h3>{chatroom.title}</h3>
       <div className="avatar-collection">
+        {owner.name && (
+          <Avatar
+            username={owner.name}
+            imageURL={owner.imageURL}
+            avatarColor={owner.avatarColor}
+            key={owner.uid}
+          />
+        )}
+
         {participants.map((participant) => {
-          return <Avatar username={participant.name} key={participant.uid} />;
+          return (
+            <Avatar
+              username={participant.name}
+              imageURL={participant.imageURL}
+              avatarColor={participant.avatarColor}
+              key={participant.uid}
+            />
+          );
         })}
       </div>
       <div>

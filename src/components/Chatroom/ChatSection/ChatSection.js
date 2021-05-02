@@ -3,8 +3,12 @@ import Chat from "./Chat/Chat";
 import { BsFillPeopleFill } from "react-icons/bs";
 import "./chatsection.css";
 import { useEffect, useRef } from "react";
-export default function ChatSection({ messages, sendMessage, members }) {
-  // const currentUser = members[chatroomData.owner];
+export default function ChatSection({
+  messages,
+  sendMessage,
+  members,
+  chatRoomData,
+}) {
   const lastMessage = useRef();
   useEffect(() => {
     lastMessage.current && lastMessage.current.scrollIntoView();
