@@ -16,19 +16,3 @@
 .chat-participants {
   min-width: 250px;
 }
-
-.chat-input-container {
-  width: 100%;
-  position: absolute;
-  bottom: 3rem;
-}
-
-.chat-input {
-  width: 90%;
-  height: 2rem;
-  font-size: 1rem;
-}
-
-.chat-send-btn {
-  padding: 0.5rem 1rem;
-}

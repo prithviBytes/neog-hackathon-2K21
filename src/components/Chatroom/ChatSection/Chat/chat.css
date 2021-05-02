@@ -1,0 +1,22 @@
+.Message-container {
+    display: flex;
+    margin-top: 17px;
+    padding: 3px 40px 3px 20px;
+}
+.username {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
+    color: var(--blue);
+    margin-right: 4px;
+}
+.timestamp {
+    color: var(--dark-grey);
+    font-size: 12px;
+}
+.Message-text {
+    color: var(--light-grey);
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+}
