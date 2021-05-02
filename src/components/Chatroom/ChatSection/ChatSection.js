@@ -4,6 +4,9 @@ import { BsFillPeopleFill } from "react-icons/bs";
 import "./chatsection.css";
 import { useEffect, useRef, useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
+import { NavbarContext } from "../../../context/NavbarContext"
+import { GiHamburgerMenu } from "react-icons/gi";
+import {VscChromeClose} from "react-icons/vsc";
 export default function ChatSection({
   messages,
   sendMessage,
@@ -18,10 +21,14 @@ export default function ChatSection({
   const { currentUser } = useContext(UserContext);
   const currentUserRole =
     members[currentUser.uid] && members[currentUser.uid].role;
+  const { isNavbarOpen, toggleNavbar } = useContext(NavbarContext)
   return (
     <div className="Chat-container">
       <header className="Chat-header">
         <div>
+          {
+            isNavbarOpen ? <VscChromeClose onClick={toggleNavbar} className="toggler-icon" /> : <GiHamburgerMenu onClick={toggleNavbar} className="toggler-icon" />
+          }
           <h3 className="Chat-title">{chatRoomData.title}</h3>
           <div className="Chat-header-button" onClick={toggleParticipantPanel}>
             <BsFillPeopleFill />

@@ -9,11 +9,11 @@ export default function Header() {
     const { currentUser } = useContext(UserContext)
     const {isNavbarOpen,toggleNavbar} = useContext(NavbarContext)
     return <nav className="Header">
-        <div className="Navbar-toggler" onClick={toggleNavbar}>
+        <span className="Navbar-toggler" onClick={toggleNavbar}>
             {
                 isNavbarOpen ? <VscChromeClose className="toggler-icon" /> : <GiHamburgerMenu className="toggler-icon" />
             }
-        </div>
+        </span>
         <div className="Header-Brand-container">
             <FaArtstation className="Header-Brand-logo" />
             <h2 className="Header-Brand-name">Debate.ly</h2>
