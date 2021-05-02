@@ -1,7 +1,7 @@
 import { FaArtstation, FaHome, FaUserAlt, FaFolderPlus } from "react-icons/fa";
 import { AiFillWechat, AiOutlineLogout } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
-import {GrClose} from "react-icons/gr"
+import {VscChromeClose} from "react-icons/vsc"
 import fb from "../../firebase";
 import "./navbar.css";
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ export default function Navbar() {
     <>
     <div className="Navbar-toggler"  onClick={() => setOpen(isOpen => !isOpen)}>
       {
-        isOpen ? <GrClose className="toggler-icon"/> : <GiHamburgerMenu className="toggler-icon"/>
+        isOpen ? <VscChromeClose className="toggler-icon"/> : <GiHamburgerMenu className="toggler-icon"/>
       }
     </div>
     <nav className={`Navbar ${isOpen ? "Navbar-translate" : null}`}>

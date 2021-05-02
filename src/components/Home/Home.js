@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import fb, { db } from "../../firebase";
 import ChatroomCard from "../ChatroomCard/ChatroomCard";
+import Header from "../Header/Header"
 import "./home.css";
 
 export default function Home() {
@@ -67,6 +68,8 @@ export default function Home() {
   }, [currentUser]);
 
   return (
+    <>
+    <Header />
     <div className="home">
       <h3 className="chatroom-subtitle">Your Collections</h3>
       <div className="card-collection-container">
@@ -81,5 +84,6 @@ export default function Home() {
         })}
       </div>
     </div>
+    </>
   );
 }

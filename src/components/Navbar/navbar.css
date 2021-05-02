@@ -86,4 +86,7 @@
   .Navbar-translate {
     transform: translateX(0);
   }
+  .Brand-container {
+    display: none;
+  }
 }
