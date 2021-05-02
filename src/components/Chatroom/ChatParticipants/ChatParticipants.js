@@ -1,5 +1,7 @@
 import fb, { db } from "../../../firebase";
-
+import "./chatparticipants.css";
+import Avatar from "../../Avatar/Avatar"
+import { userColors } from '../../../constants';
 export default function ChatParticipants({ members, chatroomId }) {
   if (
     !fb.auth().currentUser ||
@@ -85,7 +87,8 @@ export default function ChatParticipants({ members, chatroomId }) {
         ) : null;
       return (
         <div className="member-item" key={member.uid}>
-          <span>{member.name}</span>
+          <Avatar username={member.name} imageURL={member.imageURL} avatarColor={member.avatarColor} />
+          <p style={{ color: userColors.others }}>{member.name}</p>
           {actionBtn}
         </div>
       );
@@ -103,7 +106,8 @@ export default function ChatParticipants({ members, chatroomId }) {
         ) : null;
       return (
         <div className="member-item" key={member.uid}>
-          <span>{member.name}</span>
+          <Avatar username={member.name} imageURL={member.imageURL} avatarColor={member.avatarColor} />
+          <p style={{ color: userColors.others }}>{member.name}</p >
           {actionBtn}
         </div>
       );
@@ -129,9 +133,13 @@ export default function ChatParticipants({ members, chatroomId }) {
       );
     }
     return (
-      <div className="member-item" key={user.uid}>
-        <span>{user.name}</span>({user.role}){actionBtn}
-      </div>
+      <>
+        <h5 className="chat-participants-header">Your Role: {user.role}</h5>
+        <div className="member-item" key={user.uid}>
+          <Avatar username={user.name} avatarColor={user.avatarColor} imageURL={user.imageURL} />
+          <p style={{ color: "#FFD700" }}>{user.name}</p>{actionBtn}
+        </div>
+      </>
     );
   };
 
@@ -145,7 +153,8 @@ export default function ChatParticipants({ members, chatroomId }) {
       ) : null;
     return (
       <div className="member-item" key={member.uid}>
-        <span>{member.name}</span>
+        <Avatar username={member.name} imageURL={member.imageURL} avatarColor={member.avatarColor} />
+        <p style={{ color: userColors.participants }}>{member.name}</p>
         {actionBtn}
       </div>
     );
@@ -157,18 +166,18 @@ export default function ChatParticipants({ members, chatroomId }) {
       .get()
       .then(doc => {
         const user = doc.data();
-        db.collection("chatrooms") 
-        .doc(chatroomId)
-        .collection("members")
-        .doc(userId)
-        .set({
-          uid: userId,
-          avatarColor: user.avatarColor,
-          imageURL: user.imageURL,
-          name: user.name,
-          role: "AUDIANCE",
-          isActive: true,
-        });
+        db.collection("chatrooms")
+          .doc(chatroomId)
+          .collection("members")
+          .doc(userId)
+          .set({
+            uid: userId,
+            avatarColor: user.avatarColor,
+            imageURL: user.imageURL,
+            name: user.name,
+            role: "AUDIANCE",
+            isActive: true,
+          });
       })
   }
 
@@ -217,26 +226,23 @@ export default function ChatParticipants({ members, chatroomId }) {
         role: "AUDIANCE",
       });
   }
-
   return (
     <div className="chat-participants">
-      <h3>Chat Participants</h3>
+      <h5 className="chat-participants-header">Members-{Object.keys(members).length}</h5>
       <div>
         <div className="member-item" key={owner.uid}>
-          <span>{owner.name}</span> (Organizer)
+          <Avatar imageURL={owner.imageURL} username={owner.name} avatarColor={owner.avatarColor} />
+          <p style={{ color: userColors.owner }}>{owner.name}</p>
         </div>
 
-        <h2>User</h2>
-        {userComponent}
+        {user.role !== "OWNER" && userComponent}
 
         {participants && (
           <>
-            <h2>Participants</h2> {participants}
+            <h5 className="chat-participants-header">Participants</h5 > {participants}
           </>
         )}
-
-        <hr />
-        <h2>Audiance</h2>
+        <h5 className="chat-participants-header">Audiance</h5>
         {requestAudianceList}
         {nonRequestAudianceList}
       </div>

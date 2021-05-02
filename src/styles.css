@@ -14,6 +14,9 @@ body {
   margin: 0;
   padding: 0;
 }
+body{
+  overflow-y: hidden;
+}
 
 /* background color
 background-image: linear-gradient(rgba(0, 0, 0, 0.6), #121212);
@@ -32,7 +35,3 @@ background-color: rgb(0, 184, 96); */
   background-color: rgb(24, 152, 160);
 }
 
-/* 
-Organizer color: rgb(233, 30, 99)
-Admins color: rgb(230, 126, 34)
-Participants color: rgb(52, 152, 219) */

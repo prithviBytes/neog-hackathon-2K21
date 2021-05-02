@@ -1,0 +1,34 @@
+.chat-participants{
+    min-width: 240px;
+    background-color: rgba(0,0,0,0.7);
+}
+.chat-participants-header {
+    padding: 24px 8px 0 16px;
+    color: #8e9297;
+    height: 40px;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.member-item {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 10px;
+}
+.member-item p {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.member-item .image-avatar, 
+.member-item .text-avatar {
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+}
