@@ -2,6 +2,9 @@ import fb, { db } from "../../../firebase";
 import "./chatparticipants.css";
 import Avatar from "../../Avatar/Avatar"
 import { userColors } from '../../../constants';
+import { IoHandRightSharp } from 'react-icons/io5'
+import {AiOutlinePlusCircle, AiOutlineMinusCircle} from "react-icons/ai"
+import {FaHandRock} from "react-icons/fa"
 export default function ChatParticipants({ members, chatroomId }) {
   if (
     !fb.auth().currentUser ||
@@ -81,9 +84,7 @@ export default function ChatParticipants({ members, chatroomId }) {
       const currentUserRole = user.role;
       const actionBtn =
         currentUserRole === "OWNER" ? (
-          <button onClick={() => convertToParticipant(member.uid)}>
-            Accept Request
-          </button>
+          <IoHandRightSharp title="Add to participants" className="member-list-icons hand-icon" onClick={() => convertToParticipant(member.uid)} />
         ) : null;
       return (
         <div className="member-item" key={member.uid}>
@@ -100,9 +101,7 @@ export default function ChatParticipants({ members, chatroomId }) {
       const currentUserRole = user.role;
       const actionBtn =
         currentUserRole === "OWNER" ? (
-          <button onClick={() => convertToParticipant(member.uid)}>
-            Add Participant
-          </button>
+          <AiOutlinePlusCircle title="Add to Participants" className="member-list-icons add-icon" onClick={() => convertToParticipant(member.uid)}/>
         ) : null;
       return (
         <div className="member-item" key={member.uid}>
@@ -125,11 +124,11 @@ export default function ChatParticipants({ members, chatroomId }) {
       );
     } else if (currentUserRole === "AUDIANCE" && user.hasActiveRequest) {
       actionBtn = (
-        <button onClick={withdrawRequestForUser}>Withdraw Request</button>
+        <FaHandRock title="Withdraw request" className="member-list-icons hand-icon"  onClick={withdrawRequestForUser} />
       );
     } else if (currentUserRole === "AUDIANCE" && !user.hasActiveRequest) {
       actionBtn = (
-        <button onClick={requestAccessForUser}>Request Access</button>
+        <IoHandRightSharp title="Request Access" onClick={requestAccessForUser} className="member-list-icons hand-icon" />
       );
     }
     return (
@@ -149,7 +148,7 @@ export default function ChatParticipants({ members, chatroomId }) {
     const currentUserRole = user.role;
     const actionBtn =
       currentUserRole === "OWNER" ? (
-        <button onClick={() => moveToLobby(member.uid)}>Move To Lobby</button>
+        <AiOutlineMinusCircle title="Remove from Participants" className="member-list-icons minus-icon"  onClick={() => moveToLobby(member.uid)} />
       ) : null;
     return (
       <div className="member-item" key={member.uid}>
