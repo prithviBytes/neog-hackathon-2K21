@@ -84,6 +84,7 @@ export default function ChatRoomForm() {
         uid: currentUser.uid,
         name: currentUser.displayName,
         role: "OWNER",
+        isActive: true,
       })
       .then(() => {
         console.log("success");

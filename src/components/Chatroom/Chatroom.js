@@ -29,6 +29,7 @@ export default function Chatroom() {
   }, []);
 
   const sendMessage = (message) => {
+    console.log(currentUser.uid);
     db.collection("chatrooms").doc(id).collection("messages").add({
       from: currentUser.uid,
       text: message,

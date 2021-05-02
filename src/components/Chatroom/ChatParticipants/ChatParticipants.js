@@ -12,6 +12,8 @@ export default function ChatParticipants({ members, chatroomId }) {
     return <h2>No User</h2>;
   }
 
+  console.log({ members });
+
   let user = fb.auth().currentUser && members[fb.auth().currentUser.uid];
   let { owner, participants, audiance } = Object.values(members).reduce(
     (acc, member) => {
