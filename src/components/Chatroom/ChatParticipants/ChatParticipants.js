@@ -140,7 +140,7 @@ export default function ChatParticipants({
     if (currentUserRole === "PARTICIPANT") {
       actionBtn = (
         <IoExit
-          className="member-list-icons"
+          className="member-list-icons exit-icon"
           onClick={() => moveToLobby(user.uid)}
           title="Return to Lobby"
         ></IoExit>

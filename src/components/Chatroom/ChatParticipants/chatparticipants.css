@@ -57,7 +57,9 @@
 .minus-icon {
   color: #f71900;
 }
-
+.exit-icon {
+  color: red;
+}
 @media (max-width: 768px) {
   .chat-participants {
     height: 100vh;

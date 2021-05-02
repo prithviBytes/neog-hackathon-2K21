@@ -15,6 +15,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 1rem 0rem;
+  padding-bottom: 60px;
 }
 .home::-webkit-scrollbar {
   width: 3px;
