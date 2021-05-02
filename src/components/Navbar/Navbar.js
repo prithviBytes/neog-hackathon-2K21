@@ -1,16 +1,25 @@
 import { FaArtstation, FaHome, FaUserAlt, FaFolderPlus } from "react-icons/fa";
 import { AiFillWechat, AiOutlineLogout } from "react-icons/ai";
+import { GiHamburgerMenu } from "react-icons/gi";
+import {GrClose} from "react-icons/gr"
 import fb from "../../firebase";
 import "./navbar.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [isOpen,setOpen] = useState(false)
   const logout = () => {
     fb.auth().signOut();
   };
-
   return (
-    <nav className="Navbar">
+    <>
+    <div className="Navbar-toggler"  onClick={() => setOpen(isOpen => !isOpen)}>
+      {
+        isOpen ? <GrClose className="toggler-icon"/> : <GiHamburgerMenu className="toggler-icon"/>
+      }
+    </div>
+    <nav className={`Navbar ${isOpen ? "Navbar-translate" : null}`}>
       <div className="Navbar-container">
         <div className="Brand-container">
           <FaArtstation className="Brand-logo" />
@@ -48,5 +57,6 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
+    </>
   );
 }

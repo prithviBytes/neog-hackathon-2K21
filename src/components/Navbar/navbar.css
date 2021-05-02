@@ -5,7 +5,7 @@
   background-color: #000;
   color: #fff;
   z-index: 5;
-  transition: min-width 0.4s;
+  transition: all 0.4s;
 }
 .Navbar-container {
   padding-top: 30px;
@@ -69,8 +69,21 @@
 .Navbar-item:hover {
   color: #fff;
 }
-/* @media (max-width: 850px) {
-    .Navbar {
-      transform: translateX(-250px);
-    }
-  } */
+.Navbar-toggler {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+}
+.toggler-icon {
+  color: #fff;
+  font-size: 30px;
+}
+@media (max-width: 850px) {
+  .Navbar {
+    transform: translateX(-250px);
+  }
+  .Navbar-translate {
+    transform: translateX(0);
+  }
+}
