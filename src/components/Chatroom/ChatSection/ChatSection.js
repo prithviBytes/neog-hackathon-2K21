@@ -14,7 +14,7 @@ export default function ChatSection({ messages, sendMessage, members }) {
     <div className="Chat-container">
       <header className="Chat-header">
         <div>
-          <h3 className="Chat-title">React-router-v6 sucks!</h3>
+          <h3 className="Chat-title">{chatRoomData.title}</h3>
           <div className="Chat-header-button">
             <BsFillPeopleFill />
           </div>

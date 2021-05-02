@@ -76,15 +76,23 @@ export default function ChatRoomForm() {
   };
 
   const addOwnerToChatroom = (chatroom, currentUser) => {
-    db.collection("chatrooms")
-      .doc(chatroom.id)
-      .collection("members")
+    db.collection("users")
       .doc(currentUser.uid)
-      .set({
-        uid: currentUser.uid,
-        name: currentUser.displayName,
-        role: "OWNER",
-        isActive: true,
+      .get()
+      .then((doc) => {
+        const user = doc.data();
+        db.collection("chatrooms")
+          .doc(chatroom.id)
+          .collection("members")
+          .doc(currentUser.uid)
+          .set({
+            uid: currentUser.uid,
+            name: currentUser.displayName,
+            role: "OWNER",
+            isActive: true,
+            avatarColor: user.avatarColor,
+            imageURL: user.imageURL,
+          });
       });
   };
 

@@ -85,6 +85,7 @@ export default function Chatroom() {
       ) : (
         <>
           <ChatSection
+            chatRoomData={chatRoomData}
             members={members}
             messages={messages}
             sendMessage={sendMessage}

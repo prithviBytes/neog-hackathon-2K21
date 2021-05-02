@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {getRandomColor} from '../../constants'
 import "./auth.css";
 
 import firebase, { db } from "../../firebase";
@@ -86,6 +87,8 @@ export default function Auth({ from }) {
           db.collection("users").doc(user.uid).set({
             name: user.displayName,
             email: user.email,
+            imageURL: user.photoURL,
+            avatarColor: getRandomColor(),
             chatrooms: [],
           });
         }
