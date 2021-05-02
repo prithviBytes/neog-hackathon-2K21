@@ -98,4 +98,7 @@
     flex-direction: column;
     min-width: 300px;
   }
+  .input-box {
+    width: 100%;
+  }
 }
