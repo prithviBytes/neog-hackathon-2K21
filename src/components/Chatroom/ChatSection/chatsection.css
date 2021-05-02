@@ -30,6 +30,7 @@
   cursor: pointer;
 }
 .Messages-container {
+  padding-top: 20px;
   width: 100%;
   min-height: 80%;
   overflow-y: scroll;
