@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import ChatSection from "./ChatSection/ChatSection";
 import ChatParticipants from "./ChatParticipants/ChatParticipants";
+import { UserContext } from "../../context/UserContext";
 
 import { db } from "../../firebase";
 
@@ -10,6 +11,7 @@ import "./chatroom.css";
 
 export default function Chatroom() {
   const { id } = useParams();
+  const { currentUser } = useContext(UserContext);
 
   const [messages, setMessages] = useState({});
   const [members, setMembers] = useState({});
@@ -28,7 +30,7 @@ export default function Chatroom() {
 
   const sendMessage = (message) => {
     db.collection("chatrooms").doc(id).collection("messages").add({
-      from: "1",
+      from: currentUser.uid,
       text: message,
       timestamp: new Date().valueOf(),
     });
@@ -75,8 +77,18 @@ export default function Chatroom() {
 
   return (
     <div className="chatroom">
-      <ChatSection messages={messages} sendMessage={sendMessage} />
-      <ChatParticipants members={members} chatroomId={id} />
+      {Object.keys(members).length === 0 && members.constructor === Object ? (
+        <></>
+      ) : (
+        <>
+          <ChatSection
+            members={members}
+            messages={messages}
+            sendMessage={sendMessage}
+          />
+          <ChatParticipants members={members} chatroomId={id} />
+        </>
+      )}
     </div>
   );
 }

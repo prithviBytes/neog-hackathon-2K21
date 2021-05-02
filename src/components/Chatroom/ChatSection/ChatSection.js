@@ -1,14 +1,30 @@
 import ChatInput from "./ChatInput/ChatInput";
 import Chat from "./Chat/Chat";
-
-export default function ChatSection({ messages, sendMessage }) {
+import { BsFillPeopleFill } from "react-icons/bs";
+import "./chatsection.css";
+export default function ChatSection({ messages, sendMessage, members }) {
   return (
-    <div className="chat-section">
-      <h2>Messages</h2>
-      {/* {Object.values(messages).map((message) => (
-        <Chat text={message.text}></Chat>
-      ))} */}
+    <div className="Chat-container">
+      <header className="Chat-header">
+        <div>
+          <h3 className="Chat-title">React-router-v6 sucks!</h3>
+          <div className="Chat-header-button">
+            <BsFillPeopleFill />
+          </div>
+        </div>
+      </header>
+      <div className="Messages-container">
+        {Object.values(messages).map((message) => (
+          <Chat message={message} members={members} />
+        ))}
+      </div>
       <ChatInput sendMessage={sendMessage} />
     </div>
   );
 }
+{
+  /* <ChatInput sendMessage={sendMessage} /> */
+}
+// {Object.values(messages).map((message) => (
+//   <Chat text={message.text}></Chat>
+// ))}
