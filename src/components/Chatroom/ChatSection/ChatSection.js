@@ -16,7 +16,8 @@ export default function ChatSection({
     lastMessage.current && lastMessage.current.scrollIntoView();
   }, [messages]);
   const { currentUser } = useContext(UserContext);
-  const currentUserRole = members[currentUser.uid].role;
+  const currentUserRole =
+    members[currentUser.uid] && members[currentUser.uid].role;
   return (
     <div className="Chat-container">
       <header className="Chat-header">
