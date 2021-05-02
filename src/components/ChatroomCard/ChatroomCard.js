@@ -42,7 +42,7 @@ export default function ChatroomCard({ chatroom }) {
   console.log(owner);
   return (
     <Link to={`/chatroom/${chatroom.chatroomId}`} className="chatroom-card">
-      <h3>{chatroom.title}</h3>
+      <h3 className="chatroom-card-title">{chatroom.title}</h3>
       <div className="avatar-collection">
         {owner.name && (
           <Avatar
@@ -52,7 +52,6 @@ export default function ChatroomCard({ chatroom }) {
             key={owner.uid}
           />
         )}
-
         {participants.map((participant) => {
           return (
             <Avatar
@@ -64,9 +63,18 @@ export default function ChatroomCard({ chatroom }) {
           );
         })}
       </div>
-      <div>
-        {messageCount} <AiFillWechat />
-        {participantCount} <IoIosPeople />
+      <p className="chatroom-card-desc">
+        {chatroom.description}
+      </p>
+      <div className="stats">
+        <div className="stat-container">
+          <span className="stat-count">{messageCount}</span>
+          <AiFillWechat className="stat-icon" />
+        </div>
+        <div className="stat-container">
+          <span className="stat-count">{participantCount} </span>
+          <IoIosPeople className='stat-icon' />
+        </div>
       </div>
       <p>- {owner.name}</p>
     </Link>
