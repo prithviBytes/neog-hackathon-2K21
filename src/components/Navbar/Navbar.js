@@ -5,46 +5,42 @@ import {VscChromeClose} from "react-icons/vsc"
 import fb from "../../firebase";
 import "./navbar.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import {NavbarContext} from "../../context/NavbarContext"
+import { useContext } from "react";
 
 export default function Navbar() {
-  const [isOpen,setOpen] = useState(false)
+  const {isNavbarOpen, toggleNavbar} = useContext(NavbarContext)
   const logout = () => {
     fb.auth().signOut();
   };
   return (
     <>
-    <div className="Navbar-toggler"  onClick={() => setOpen(isOpen => !isOpen)}>
-      {
-        isOpen ? <VscChromeClose className="toggler-icon"/> : <GiHamburgerMenu className="toggler-icon"/>
-      }
-    </div>
-    <nav className={`Navbar ${isOpen ? "Navbar-translate" : null}`}>
+    <nav className={`Navbar ${isNavbarOpen ? "Navbar-translate" : null}`}>
       <div className="Navbar-container">
         <div className="Brand-container">
           <FaArtstation className="Brand-logo" />
           <h2 className="Brand-name">Discord</h2>
         </div>
         <div className="Navbar-navigation">
-          <Link to="/">
+          <Link to="/" onClick={toggleNavbar}>
             <div className="Navbar-item">
-              <FaHome className="Navbar-item-logo" />
+              <FaHome className="Navbar-item-logo"/>
               <h4 className="Navbar-item-text">Home</h4>
             </div>
-          </Link>
-          <Link to="/discussions">
+          </Link> 
+          <Link to="/discussions" onClick={toggleNavbar}>
             <div className="Navbar-item">
               <AiFillWechat className="Navbar-item-logo" />
               <h4 className="Navbar-item-text">Your Discussions</h4>
             </div>
           </Link>
-          <Link to="/chatroom/new">
+          <Link to="/chatroom/new" onClick={toggleNavbar}>
             <div className="Navbar-item">
               <FaFolderPlus className="Navbar-item-logo" />
               <h4 className="Navbar-item-text">Create Room</h4>
             </div>
           </Link>
-          <Link to="/profile">
+          <Link to="/profile" onClick={toggleNavbar}>
             <div className="Navbar-item">
               <FaUserAlt className="Navbar-item-logo" />
               <h4 className="Navbar-item-text">Profile</h4>

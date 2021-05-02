@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import fb, { db } from "../../firebase";
 import ChatroomCard from "../ChatroomCard/ChatroomCard";
+import Header from "../Header/Header"
 import "../Home/home.css";
 
 export default function Discussions() {
@@ -38,6 +39,8 @@ export default function Discussions() {
   }, [currentUser]);
 
   return (
+    <>
+    <Header />
     <div className="home">
       <h3>Your Collections</h3>
       <div className="card-collection-container">
@@ -46,5 +49,6 @@ export default function Discussions() {
         })}
       </div>
     </div>
+    </>
   );
 }

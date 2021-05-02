@@ -69,17 +69,7 @@
 .Navbar-item:hover {
   color: #fff;
 }
-.Navbar-toggler {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 999;
-}
-.toggler-icon {
-  color: #fff;
-  font-size: 30px;
-}
-@media (max-width: 850px) {
+@media (max-width: 768px) {
   .Navbar {
     transform: translateX(-250px);
   }

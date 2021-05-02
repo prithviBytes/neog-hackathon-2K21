@@ -5,6 +5,7 @@ import firebase from "firebase";
 
 import "./chatroom-form.css";
 import { useNavigate } from "react-router-dom";
+import Header from "../Header/Header"
 
 export default function ChatRoomForm() {
   const validators = {
@@ -131,6 +132,8 @@ export default function ChatRoomForm() {
   };
 
   return (
+    <>
+    <Header />
     <div className="form-container">
       <form className="chatroom-form" onSubmit={formSubmitHandler}>
         <h2>Create Chatroom</h2>
@@ -181,5 +184,6 @@ export default function ChatRoomForm() {
         <button className="chatroom-btn">Create</button>
       </form>
     </div>
+    </>
   );
 }
