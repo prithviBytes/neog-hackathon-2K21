@@ -13,6 +13,7 @@ export default function Chatroom() {
   const { id } = useParams();
   const { currentUser } = useContext(UserContext);
 
+  const [isDataReady, setIsDataReady] = useState(false);
   const [messages, setMessages] = useState({});
   const [members, setMembers] = useState({});
   const [chatRoomData, setChatRoomData] = useState({});
@@ -29,7 +30,6 @@ export default function Chatroom() {
   }, []);
 
   const sendMessage = (message) => {
-    console.log(currentUser.uid);
     db.collection("chatrooms").doc(id).collection("messages").add({
       from: currentUser.uid,
       text: message,
@@ -53,6 +53,7 @@ export default function Chatroom() {
         const messagesFromServer = {};
         snapshot.forEach((doc) => {
           messagesFromServer[doc.id] = doc.data();
+          messagesFromServer[doc.id]["id"] = doc.id;
         });
         setMessages(messagesFromServer);
       });
@@ -69,6 +70,7 @@ export default function Chatroom() {
         const membersFromServer = {};
         snapshot.forEach((doc) => {
           membersFromServer[doc.id] = doc.data();
+          membersFromServer[doc.id]["id"] = doc.id;
         });
         setMembers(membersFromServer);
       });

@@ -1,0 +1,26 @@
+.chatroom-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  height: 170px;
+  padding: 0.7rem;
+  color: white;
+  text-decoration: none;
+  background: black;
+  border-radius: 1rem;
+  margin: 0 0.5rem;
+}
+
+.chatroom-card p {
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+
+.avatar-collection {
+  display: flex;
+}
+
+.avatar-collection :not(:first-child) {
+  margin-left: -1.5rem;
+}

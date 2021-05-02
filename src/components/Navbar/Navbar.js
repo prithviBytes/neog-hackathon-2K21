@@ -1,11 +1,9 @@
 import { FaArtstation, FaHome, FaUserAlt, FaLock } from "react-icons/fa";
 import { AiFillWechat } from "react-icons/ai";
 import "./navbar.css";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
-
-
-
   return (
     <nav className="Navbar">
       <div className="Navbar-container">
@@ -16,7 +14,9 @@ export default function Navbar() {
         <div className="Navbar-navigation">
           <div className="Navbar-item">
             <FaHome className="Navbar-item-logo" />
-            <h4 className="Navbar-item-text">Home</h4>
+            <Link to="/">
+              <h4 className="Navbar-item-text">Home</h4>
+            </Link>
           </div>
           <div className="Navbar-item">
             <AiFillWechat className="Navbar-item-logo" />
