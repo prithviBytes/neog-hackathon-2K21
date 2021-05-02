@@ -86,4 +86,10 @@ textarea {
   .form-container {
     margin-top: 80px;
   }
+  .chatroom-form {
+    max-width: 400px;
+  }
+  .chatroom-form .input{
+    width: 100%;
+  }
 }
