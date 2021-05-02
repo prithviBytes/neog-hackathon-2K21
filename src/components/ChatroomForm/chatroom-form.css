@@ -15,7 +15,17 @@
   align-items: flex-start;
   box-shadow: 0 3px 16px 0 rgb(0 0 0 / 11%);
 }
-
+.chatroom-form .input{
+  width: 400px;
+  padding: 10px;
+  border: none;
+  outline: transparent;
+  background: #303339;
+  font-size: 16px;
+  color: #dcddde;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
 .chatroom-form h2 {
   margin: 0 auto 1rem auto;
   text-align: center;
@@ -30,7 +40,12 @@
 }
 
 .chatroom-form label {
-  margin-bottom: 0.3rem;
+  color: #8e9297;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
 }
 
 .chatroom-form input,

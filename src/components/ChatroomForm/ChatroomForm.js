@@ -142,6 +142,7 @@ export default function ChatRoomForm() {
         </label>
         <input
           id="title"
+          className="input"
           value={form.title.value}
           onChange={onChangeHandler}
         ></input>
@@ -156,6 +157,7 @@ export default function ChatRoomForm() {
         <label>Description (Max 250 chars)</label>
         <textarea
           id="description"
+          className="input"
           value={form.description.value}
           onChange={onChangeHandler}
         ></textarea>
@@ -167,12 +169,6 @@ export default function ChatRoomForm() {
         >
           {form.description.errorMessage}
         </p>
-        <label>Rules (Max 300 chars)</label>
-        <textarea
-          id="rules"
-          value={form.rules.value}
-          onChange={onChangeHandler}
-        ></textarea>
         <p
           className="error-input"
           style={{
