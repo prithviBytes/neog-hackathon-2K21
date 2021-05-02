@@ -16,12 +16,12 @@ export default function Header() {
         </div>
         <div className="Header-Brand-container">
             <FaArtstation className="Header-Brand-logo" />
-            <h2 className="Header-Brand-name">Discord</h2>
+            <h2 className="Header-Brand-name">Debate.ly</h2>
         </div>
         <div className="flex-grow" />
         <div className="User-message">
             <p>
-                <span>Hi, </span>{currentUser.displayName}
+                <span>Hi, </span>{currentUser && currentUser.displayName}
             </p>
         </div>
     </nav>

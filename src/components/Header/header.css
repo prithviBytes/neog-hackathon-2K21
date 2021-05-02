@@ -61,4 +61,7 @@
     .Navbar-toggler{
         display: inline-block;
     }
+    .User-message{
+        display: none;
+    }
 }

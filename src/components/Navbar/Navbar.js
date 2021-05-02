@@ -19,7 +19,7 @@ export default function Navbar() {
       <div className="Navbar-container">
         <div className="Brand-container">
           <FaArtstation className="Brand-logo" />
-          <h2 className="Brand-name">Discord</h2>
+          <h2 className="Brand-name">Debate.ly</h2>
         </div>
         <div className="Navbar-navigation">
           <Link to="/" onClick={toggleNavbar}>
