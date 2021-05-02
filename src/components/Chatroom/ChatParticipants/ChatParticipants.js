@@ -152,16 +152,24 @@ export default function ChatParticipants({ members, chatroomId }) {
   }
 
   function addUserToChatroom(userId) {
-    db.collection("chatrooms")
-      .doc(chatroomId)
-      .collection("members")
+    db.collection("users")
       .doc(userId)
-      .set({
-        uid: userId,
-        name: fb.auth().currentUser.displayName,
-        role: "AUDIANCE",
-        isActive: true,
-      });
+      .get()
+      .then(doc => {
+        const user = doc.data();
+        db.collection("chatrooms") 
+        .doc(chatroomId)
+        .collection("members")
+        .doc(userId)
+        .set({
+          uid: userId,
+          avatarColor: user.avatarColor,
+          imageURL: user.imageURL,
+          name: user.name,
+          role: "AUDIANCE",
+          isActive: true,
+        });
+      })
   }
 
   function requestAccessForUser() {
