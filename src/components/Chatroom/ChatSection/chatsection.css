@@ -1,45 +1,54 @@
 .Chat-container {
-    width: 100%;
-    position: relative;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  width: 100%;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .Chat-header {
-    position: sticky;
-    top: 0;
-    width: 100%;
+  position: sticky;
+  top: 0;
+  width: 100%;
 }
 .Chat-header div {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 15px;
-    height: 50px;
-    background-color: rgba(0,0,0,0.7);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
-.Chat-title{
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: 600;
+.Chat-title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.Chat-header-button {
+  cursor: pointer;
 }
 .Messages-container {
-    width: 100%;
-    min-height: 80%;
-    overflow-y: scroll;
-    padding-bottom: 20px;
+  width: 100%;
+  min-height: 80%;
+  overflow-y: scroll;
+  padding-bottom: 20px;
 }
 .Messages-container::-webkit-scrollbar {
-    width: 3px;
-  }
-   
-.Messages-container::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  width: 3px;
 }
-   
+
+.Messages-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
 .Messages-container::-webkit-scrollbar-thumb {
-    background-color: #000;
-    outline: 1px solid #000;
+  background-color: #000;
+  outline: 1px solid #000;
+}
+
+@media (max-width: 768px) {
+  /* .Chat-header div {
+    margin-left: 2.5rem;
+  } */
 }
