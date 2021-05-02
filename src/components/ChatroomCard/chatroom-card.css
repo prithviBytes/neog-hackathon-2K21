@@ -3,24 +3,58 @@
   flex-direction: column;
   justify-content: space-between;
   width: 250px;
-  height: 170px;
   padding: 0.7rem;
   color: white;
   text-decoration: none;
-  background: black;
+  background-color: #ffffff1a;
   border-radius: 1rem;
   margin: 0 0.5rem;
+  transition: background-color 0.4s;
 }
-
+.chatroom-card:hover {
+  background-color: #ffffff33;
+}
+.chatroom-card-title {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 24px;
+}
 .chatroom-card p {
   align-self: flex-end;
   justify-self: flex-end;
 }
-
+.chatroom-card-desc {
+  margin-top: 5px;
+  width: 100%;
+  color: #b3b3b3;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  min-height: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.stats {
+  display: flex;
+}
+.stat-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  color: #b3b3b3;
+  margin: 0 5px;
+}
+.stat-count {
+  margin-right: 3px;
+}
+.stat-icon {
+  font-size: 25px;
+}
 .avatar-collection {
   display: flex;
 }
-
 .avatar-collection :not(:first-child) {
   margin-left: -1.5rem;
 }

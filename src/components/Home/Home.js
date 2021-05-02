@@ -68,15 +68,13 @@ export default function Home() {
 
   return (
     <div className="home">
-      <h2>Home</h2>
-      <br />
-      <h3>Your Collections</h3>
+      <h3 className="chatroom-subtitle">Your Collections</h3>
       <div className="card-collection-container">
         {userChatrooms.map((chatroom) => {
           return <ChatroomCard chatroom={chatroom} key={chatroom.chatroomId} />;
         })}
       </div>
-      <h3>Explore</h3>
+      <h3 className="chatroom-subtitle">Explore</h3>
       <div className="card-collection-container">
         {otherChatrooms.map((chatroom) => {
           return <ChatroomCard chatroom={chatroom} key={chatroom.chatroomId} />;
