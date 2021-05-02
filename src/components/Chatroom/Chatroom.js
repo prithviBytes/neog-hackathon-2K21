@@ -13,7 +13,9 @@ export default function Chatroom() {
   const { id } = useParams();
   const { currentUser } = useContext(UserContext);
 
-  const [isDataReady, setIsDataReady] = useState(false);
+  const [showChatParticipantsPanel, setShowParticipantsPanel] = useState(
+    screen.width > 768 ? true : false
+  );
   const [messages, setMessages] = useState({});
   const [members, setMembers] = useState({});
   const [chatRoomData, setChatRoomData] = useState({});
@@ -28,6 +30,12 @@ export default function Chatroom() {
     //   chatRoomMessagesSnaphot();
     // };
   }, []);
+
+  const toggleParticipantPanel = () => {
+    setShowParticipantsPanel(function (state) {
+      return !state;
+    });
+  };
 
   const sendMessage = (message) => {
     db.collection("chatrooms").doc(id).collection("messages").add({
@@ -89,8 +97,14 @@ export default function Chatroom() {
             members={members}
             messages={messages}
             sendMessage={sendMessage}
+            toggleParticipantPanel={toggleParticipantPanel}
           />
-          <ChatParticipants members={members} chatroomId={id} />
+          <ChatParticipants
+            members={members}
+            chatroomId={id}
+            showChatParticipantsPanel={showChatParticipantsPanel}
+            chatRoomData={chatRoomData}
+          />
         </>
       )}
     </div>

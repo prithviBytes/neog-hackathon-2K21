@@ -8,6 +8,7 @@
   ],
   "main": "src/index.js",
   "dependencies": {
+    "emoji-picker-react": "3.4.4",
     "firebase": "8.4.3",
     "history": "^5.0.0",
     "moment": "^2.29.1",

@@ -1,49 +1,76 @@
-.chat-participants{
-    min-width: 240px;
-    background-color: rgba(0,0,0,0.7);
+.chat-participants {
+  position: static;
+  min-width: 240px;
+  max-width: 300px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .chat-participants-header {
-    padding: 24px 8px 0 16px;
-    color: #8e9297;
-    height: 40px;
-    font-size: 12px;
-    line-height: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
+  padding: 24px 8px 0 16px;
+  color: #8e9297;
+  height: 40px;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.chat-description {
+  padding: 8px 8px 0 16px;
+  color: #8e9297;
+  height: 40px;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
 }
 .member-item {
-    display: flex;
-    align-items: center;
-    padding-left: 16px;
-    padding-right: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 10px;
 }
 .member-item p {
-    line-height: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.member-item .image-avatar, 
+.member-item .image-avatar,
 .member-item .text-avatar {
-    height: 30px;
-    width: 30px;
-    font-size: 15px;
+  height: 30px;
+  width: 30px;
+  font-size: 15px;
 }
 .member-list-icons {
-    font-size: 30px;
-    margin-right: 15px;
-    cursor: pointer;
+  font-size: 30px;
+  margin-right: 15px;
+  cursor: pointer;
 }
-.hand-icon{
-    color: #da9f60;
+.hand-icon {
+  color: #da9f60;
 }
 .add-icon {
-    font-size: 35px;
-    color: #00b300;
+  font-size: 35px;
+  color: #00b300;
 }
 .minus-icon {
-    color: #f71900;
+  color: #f71900;
+}
+
+@media (max-width: 768px) {
+  .chat-participants {
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 3rem;
+    min-width: 240px;
+    background-color: black;
+  }
+}
+
+@media (max-width: 550px) {
+  .chat-participants {
+    min-width: 100vw;
+  }
 }

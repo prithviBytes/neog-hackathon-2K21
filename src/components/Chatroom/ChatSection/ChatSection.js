@@ -2,24 +2,27 @@ import ChatInput from "./ChatInput/ChatInput";
 import Chat from "./Chat/Chat";
 import { BsFillPeopleFill } from "react-icons/bs";
 import "./chatsection.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
+import { UserContext } from "../../../context/UserContext";
 export default function ChatSection({
   messages,
   sendMessage,
   members,
   chatRoomData,
+  toggleParticipantPanel,
 }) {
   const lastMessage = useRef();
   useEffect(() => {
     lastMessage.current && lastMessage.current.scrollIntoView();
   }, [messages]);
-
+  const { currentUser } = useContext(UserContext);
+  const currentUserRole = members[currentUser.uid].role;
   return (
     <div className="Chat-container">
       <header className="Chat-header">
         <div>
           <h3 className="Chat-title">{chatRoomData.title}</h3>
-          <div className="Chat-header-button">
+          <div className="Chat-header-button" onClick={toggleParticipantPanel}>
             <BsFillPeopleFill />
           </div>
         </div>
@@ -30,7 +33,9 @@ export default function ChatSection({
         ))}
         <span ref={lastMessage}></span>
       </div>
-      <ChatInput sendMessage={sendMessage} />
+      {currentUserRole !== "AUDIANCE" && (
+        <ChatInput sendMessage={sendMessage} />
+      )}
     </div>
   );
 }
