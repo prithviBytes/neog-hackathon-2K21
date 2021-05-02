@@ -15,17 +15,15 @@ export default function Chatroom() {
   const [members, setMembers] = useState({});
   const [chatRoomData, setChatRoomData] = useState({});
 
-  console.log(messages);
-
   useEffect(() => {
     getChatRoomData();
     let chatRoomMessagesSnaphot = subscribeToChatRoomMessages();
     subscribeToChatRoomMembers();
 
-    return () => {
-      console.log("unsubscribe");
-      chatRoomMessagesSnaphot();
-    };
+    // return () => {
+    //   console.log("unsubscribe");
+    //   chatRoomMessagesSnaphot();
+    // };
   }, []);
 
   const sendMessage = (message) => {
@@ -53,25 +51,23 @@ export default function Chatroom() {
         snapshot.forEach((doc) => {
           messagesFromServer[doc.id] = doc.data();
         });
-        console.log({ messagesFromServer });
         setMessages(messagesFromServer);
       });
 
     return chatRoomMessagesSnaphot;
   };
 
-  const subscribeToChatRoomMembers = async () => {
-    const members = {};
+  const subscribeToChatRoomMembers = () => {
     const chatRoomMemberSnaphot = db
       .collection("chatrooms")
       .doc(id)
       .collection("members")
-      .orderBy("name")
       .onSnapshot((snapshot) => {
+        const membersFromServer = {};
         snapshot.forEach((doc) => {
-          members[doc.id] = doc.data();
+          membersFromServer[doc.id] = doc.data();
         });
-        setMembers(members);
+        setMembers(membersFromServer);
       });
 
     return chatRoomMemberSnaphot;
@@ -80,7 +76,7 @@ export default function Chatroom() {
   return (
     <div className="chatroom">
       <ChatSection messages={messages} sendMessage={sendMessage} />
-      <ChatParticipants members={members} />
+      <ChatParticipants members={members} chatroomId={id} />
     </div>
   );
 }
