@@ -15,11 +15,10 @@ export default function ChatroomCard({ chatroom }) {
     db.collection("chatrooms")
       .doc(chatroom.chatroomId)
       .collection("members")
-      .where("role", "in", ["OWNER", "PARTICIPANT"])
+      .limit(6)
       .get()
       .then((querySnapshot) => {
         const members = [];
-        console.log(querySnapshot.size);
         querySnapshot.forEach((doc) => {
           const member = doc.data();
           if (member.role === "OWNER") {

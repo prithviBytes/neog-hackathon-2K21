@@ -2,11 +2,10 @@ import { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import fb, { db } from "../../firebase";
 import ChatroomCard from "../ChatroomCard/ChatroomCard";
-import "./home.css";
+import "../Home/home.css";
 
-export default function Home() {
+export default function Discussions() {
   const [userChatrooms, setUserChatrooms] = useState([]);
-  const [otherChatrooms, setOtherChatrooms] = useState([]);
   const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -35,50 +34,14 @@ export default function Home() {
                 });
                 setUserChatrooms(chatroomsFromServer);
               });
-          if (chatrooms && chatrooms.length > 0) {
-            db.collection("chatrooms")
-              .where(fb.firestore.FieldPath.documentId(), "not-in", chatrooms)
-              .get()
-              .then((querySnapshot) => {
-                const chatroomsFromServer = [];
-                querySnapshot.forEach((doc) => {
-                  chatroomsFromServer.push({
-                    ...doc.data(),
-                    chatroomId: doc.id,
-                  });
-                });
-                setOtherChatrooms(chatroomsFromServer);
-              });
-          } else {
-            db.collection("chatrooms")
-              .get()
-              .then((querySnapshot) => {
-                const chatroomsFromServer = [];
-                querySnapshot.forEach((doc) => {
-                  chatroomsFromServer.push({
-                    ...doc.data(),
-                    chatroomId: doc.id,
-                  });
-                });
-                setOtherChatrooms(chatroomsFromServer);
-              });
-          }
         });
   }, [currentUser]);
 
   return (
     <div className="home">
-      <h2>Home</h2>
-      <br />
       <h3>Your Collections</h3>
       <div className="card-collection-container">
         {userChatrooms.map((chatroom) => {
-          return <ChatroomCard chatroom={chatroom} key={chatroom.chatroomId} />;
-        })}
-      </div>
-      <h3>Explore</h3>
-      <div className="card-collection-container">
-        {otherChatrooms.map((chatroom) => {
           return <ChatroomCard chatroom={chatroom} key={chatroom.chatroomId} />;
         })}
       </div>

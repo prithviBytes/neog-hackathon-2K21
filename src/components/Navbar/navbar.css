@@ -50,7 +50,7 @@
   cursor: pointer;
   transition: all 0.4s;
 }
-.Navbar-item a {
+.Navbar-navigation a {
   text-decoration: none;
 }
 .Navbar-item-logo {
@@ -65,7 +65,6 @@
   font-weight: 500;
   line-height: 16px;
   transition: font-size 0.4s;
-  color: #b3b3b3;
 }
 .Navbar-item:hover {
   color: #fff;

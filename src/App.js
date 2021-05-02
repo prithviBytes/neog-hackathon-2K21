@@ -4,23 +4,33 @@ import Navbar from "./components/Navbar/Navbar";
 import ChatroomForm from "./components/ChatroomForm/ChatroomForm";
 import Chatroom from "./components/Chatroom/Chatroom";
 import Auth from "./components/Auth/Auth";
-import { UserProvider } from "./context/UserContext";
+import Profile from "./components/Profile/Profile";
+import { UserContext } from "./context/UserContext";
 import "./styles.css";
+import { useContext } from "react";
+import Discussions from "./components/Discussions/Discussions";
 
 export default function App() {
+  const { isUserLoggedIn } = useContext(UserContext);
   return (
     <div className="App">
-      <UserProvider>
-        <Navbar />
-        <div className="content">
-          <Routes>
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/chatroom/new" element={<ChatroomForm />} />
-            <Route path="/chatroom/:id" element={<Chatroom />} />
-          </Routes>
-        </div>
-      </UserProvider>
+      {isUserLoggedIn ? (
+        <>
+          <Navbar />
+          <div className="content">
+            <Routes>
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/discussions" element={<Discussions />} />
+              <Route path="/chatroom/new" element={<ChatroomForm />} />
+              <Route path="/chatroom/:id" element={<Chatroom />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </div>
+        </>
+      ) : (
+        <Auth />
+      )}
     </div>
   );
 }
