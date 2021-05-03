@@ -51,20 +51,26 @@ This application/site was created as a submission to a [neog.camp](https://neog.
 
 The application we present is built with features like:
 
-- Explore all chat rooms
-- Create your own chatroom
-- Fullset of capability to control your audiance
-- Ability to request for access
-- Add and remove your participants
+- Explore all chat rooms.
+- Create your own chatroom.
+- Fullset of capability to control your audiance.
+- Ability to request for access.
+- Add and remove your participants.
 - A quick dashboard to access all your discussions.
 
 ## Upcoming features
 
-- Private chatrooms just for invitees
-- Profile Page
-- Scheduled discussions
+- Private chatrooms just for invitees.
+- Profile Page.
+- Scheduled discussions.
 
 ## Contributers
+
+Tejas HN
+
+- GitHub [@hntejas](https://github.com/hntejas)
+- LinkedIn [@hntejas](https://www.linkedin.com/in/hntejas/)
+- Twitter [@TejasHN](https://twitter.com/TejasHN)
 
 Prithvi
 
@@ -72,8 +78,4 @@ Prithvi
 - LinkedIn [@prithvirajsuvarna](https://www.linkedin.com/in/prithvirajsuvarna/)
 - Twitter [@\_\_\_prithvi](https://twitter.com/___prithvi)
 
-Tejas HN
 
-- GitHub [@hntejas](https://github.com/hntejas)
-- LinkedIn [@hntejas](https://www.linkedin.com/in/hntejas/)
-- Twitter [@TejasHN](https://twitter.com/TejasHN)
