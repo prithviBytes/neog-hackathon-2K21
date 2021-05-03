@@ -8,8 +8,12 @@
 
 <div align="center">
   <h3>
-    <a href="https://debately.netlify.app/">
+    <a href="https://www.youtube.com/watch?v=vQWh0F_l_NA">
       Demo
+    </a>
+    <span> | </span>
+    <a href="https://debately.netlify.app/">
+      Live
     </a>   
     <span> | </span>
     <a href="https://github.com/prithviBytes/neog-hackathon-2K21">
@@ -18,14 +22,17 @@
   </h3>
 </div>
 
-<!-- TABLE OF CONTENTS -->
+#### Demo User Credentials
+
+- email: user@test.com
+- password: password
 
 ## Table of Contents
 
 - [Overview](#overview)
 - [Built With](#built-with)
 - [Features](#features)
-- [Contributers](#Contributers)
+- [Contributers](#contributers)
 
 ## Overview
 
@@ -50,6 +57,12 @@ The application we present is built with features like:
 - Ability to request for access
 - Add and remove your participants
 - A quick dashboard to access all your discussions.
+
+## Upcoming features
+
+- Private chatrooms just for invitees
+- Profile Page
+- Scheduled discussions
 
 ## Contributers
 
