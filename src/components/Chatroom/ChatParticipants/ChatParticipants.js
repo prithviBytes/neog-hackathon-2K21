@@ -279,7 +279,7 @@ export default function ChatParticipants({
       <h5 className="chat-participants-header">
         Members-{Object.keys(members).length}
       </h5>
-      <div>
+      <div className="participant-list">
         <div className="member-item" key={owner.uid}>
           <Avatar
             imageURL={owner.imageURL}

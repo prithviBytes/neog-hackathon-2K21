@@ -9,8 +9,10 @@ export default function ChatInput({ sendMessage }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    sendMessage(currentMessage);
-    setCurrentMessage("");
+    if (currentMessage) {
+      sendMessage(currentMessage);
+      setCurrentMessage("");
+    }
   };
 
   const onEmojiClick = (event, emojiObject) => {

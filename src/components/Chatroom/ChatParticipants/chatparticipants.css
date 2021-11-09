@@ -21,6 +21,11 @@
   line-height: 15px;
   font-weight: 600;
 }
+.participant-list {
+  max-height: calc(100vh - 120px);
+  overflow: scroll;
+  overflow-x: visible;
+}
 .member-item {
   display: flex;
   align-items: center;
